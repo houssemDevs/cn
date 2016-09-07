@@ -4,5 +4,6 @@
         <file>MainPage.qml</file>
         <file>Banner.qml</file>
         <file>NewProjectPage.qml</file>
+        <file>CustomButton.qml</file>
     </qresource>
 </RCC>

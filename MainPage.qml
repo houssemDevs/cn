@@ -8,6 +8,7 @@ Item {
     ListView {
         id: projectList
         anchors.fill: parent
+        anchors.margins: 3
         model: projectsModel
         delegate: plDelegate
     }
@@ -15,32 +16,48 @@ Item {
     Component {
         id: plDelegate
         RowLayout {
+            id: mainlayout
             width: ListView.view.width
+            spacing: 3
             height: 80
             ColumnLayout {
                 Layout.fillWidth: true
+                Layout.fillHeight: true
                 Text {
-                    text: projectTitle
+                    text: projectTitle + " " + projectDescriptionText.width + " " + mainlayout.width
+                    Layout.maximumWidth: mainlayout.width - 120
+                    elide: Text.ElideRight
                     font.pointSize: 18
                     font.bold: true
                 }
                 Text {
                     text: "Le " + projectDate + " à " + projectLocation
+                    Layout.maximumWidth: mainlayout.width - 120
+                    elide: Text.ElideRight
                     font.pointSize: 14
                 }
                 Text {
+                    id: projectDescriptionText
+                    Layout.maximumWidth: mainlayout.width - 120
                     text: projectDescription
+                    elide: Text.ElideRight
+                    clip: true
+                    font.pointSize: 12
                 }
             }
             Button {
                 id: editButton
                 Layout.minimumWidth: 10
+                Layout.preferredHeight: 40
+                Layout.preferredWidth: 40
                 text: "M"
 
             }
             Button {
                 id: removeButton
                 Layout.minimumWidth: 10
+                Layout.preferredHeight: 40
+                Layout.preferredWidth: 40
                 text: "E"
                 onClicked: {
                     projectsModel.removeProject(projectId,index);

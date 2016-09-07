@@ -89,6 +89,7 @@ int main(int argc, char *argv[]) {
   auto pvModel = new ProjectsViewModel();
   pvModel->setPmodel(pModel);
 
+  QQuickStyle::setStyle("Material");
 
   QQmlApplicationEngine engine;
   engine.load(QUrl(QLatin1String("qrc:/main.qml")));

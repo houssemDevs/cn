@@ -24,5 +24,6 @@ ApplicationWindow {
         clip: true
         height: parent.height - banner.height
         width: parent.width
+        source: "MainPage.qml"
     }
 }
