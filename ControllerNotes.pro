@@ -1,4 +1,4 @@
-QT += qml quick sql widgets
+QT += qml quick quickcontrols2 sql widgets
 
 CONFIG += c++11
 

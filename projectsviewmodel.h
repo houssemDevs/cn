@@ -2,6 +2,7 @@
 #define PROJECTSVIEWMODEL_H
 
 #include <QAbstractListModel>
+#include <QDebug>
 
 #include "projectsmodel.h"
 
@@ -16,6 +17,7 @@ enum ProjectModelRoles {
 class ProjectsViewModel: public QAbstractListModel
 {
 
+    Q_OBJECT
     ProjectsModel *pmodel;
 
 public:
@@ -26,6 +28,7 @@ public:
     Qt::ItemFlags flags(const QModelIndex &index) const override;
     QHash<int,QByteArray> roleNames() const override;
     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+
 
     Q_INVOKABLE void addNewProject(QString title, QString location, QString date, QString description);
     Q_INVOKABLE void modifyProject(QString title, QString location, QString date, QString description, int id, int index);

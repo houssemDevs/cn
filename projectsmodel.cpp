@@ -23,6 +23,7 @@ Project ProjectsModel::getProject(int offset)
     p.setProject (query.value ("project").toString());
     p.setLocation (query.value ("location").toString ());
     p.setDescription (query.value ("description").toString ());
+    p.setDate (query.value("date").toString ());
     //TODO: Add Date field support.
     return p;
 }
@@ -30,11 +31,12 @@ Project ProjectsModel::getProject(int offset)
 int ProjectsModel::addProject(Project p)
 {
     QSqlQuery query(db);
-    query.exec (QString("INSERT INTO Projects(project,location,description) VALUES ('%1','%2','%3');")
+    query.exec (QString("INSERT INTO Projects(project,location,date,description) VALUES ('%1','%2','%3','%4');")
                 .arg (p.getProject ())
                 .arg (p.getLocation ())
+                .arg (p.getDate ())
                 .arg (p.getDescription ()));
-    //TODO: Add Date field support in insertion too.
+    qDebug() << query.lastError ().text ();
     query.exec ("SELECT last_insert_rowid() FROM Projects;");
     query.first ();
     return query.value (0).toInt ();
