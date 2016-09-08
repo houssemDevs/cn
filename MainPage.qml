@@ -23,6 +23,7 @@ Item {
             ColumnLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
+                Layout.alignment: Qt.AlignLeft
                 Text {
                     text: projectTitle + " " + projectDescriptionText.width + " " + mainlayout.width
                     Layout.maximumWidth: mainlayout.width - 120
@@ -45,22 +46,27 @@ Item {
                     font.pointSize: 12
                 }
             }
-            Button {
-                id: editButton
-                Layout.minimumWidth: 10
-                Layout.preferredHeight: 40
-                Layout.preferredWidth: 40
-                text: "M"
-
-            }
-            Button {
-                id: removeButton
-                Layout.minimumWidth: 10
-                Layout.preferredHeight: 40
-                Layout.preferredWidth: 40
-                text: "E"
-                onClicked: {
-                    projectsModel.removeProject(projectId,index);
+            RowLayout {
+                Layout.alignment: Qt.AlignRight
+                Layout.maximumWidth: 120
+                Layout.preferredWidth: 100
+                spacing: 6
+                CustomButton {
+                    id: editButton
+                    Layout.minimumWidth: 10
+                    Layout.preferredHeight: 40
+                    Layout.preferredWidth: 40
+                    image: "icons/EditButton.svg"
+                }
+                CustomButton {
+                    id: removeButton
+                    Layout.minimumWidth: 10
+                    Layout.preferredHeight: 40
+                    Layout.preferredWidth: 40
+                    image: "icons/CrossButton.svg"
+                    onClicked: {
+                        projectsModel.removeProject(projectId,index);
+                    }
                 }
             }
         }

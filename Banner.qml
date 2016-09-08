@@ -7,7 +7,7 @@ Item {
     signal mainListSignal()
     Rectangle {
         anchors.fill: parent
-        color: "lightgrey"
+        color: "grey"
         Loader {
             id: compLoader
             anchors.fill: parent
@@ -18,10 +18,15 @@ Item {
             RowLayout {
                 anchors.fill: parent
                 Text {
-                    text: "ControllerNotes"
+                    Layout.alignment: Qt.AlignLeft
+                    Layout.margins: 10
+                    text: "Visites"
+                    font.pointSize: 20
                 }
-                Button {
-                    text: "New project"
+                CustomButton {
+                    Layout.alignment: Qt.AlignRight
+                    Layout.margins: 10
+                    image: "icons/AddButton.svg"
                     onClicked: {
                         compLoader.sourceComponent = newCompo
                         newProjectSignal()
@@ -33,15 +38,20 @@ Item {
             id: newCompo
             RowLayout {
                 anchors.fill: parent
-                Button {
-                    text: "goback"
+                CustomButton {
+                    Layout.alignment: Qt.AlignLeft
+                    Layout.margins: 10
+                    image: "icons/ArrowButtonBack.svg"
                     onClicked: {
                         compLoader.sourceComponent = mainCompo
                         mainListSignal()
                     }
                 }
                 Text {
-                    text: "New project"
+                    Layout.alignment: Qt.AlignRight
+                    Layout.margins: 10
+                    font.pointSize: 20
+                    text: "Nouvelle visite"
                 }
             }
         }

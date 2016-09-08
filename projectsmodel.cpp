@@ -24,7 +24,6 @@ Project ProjectsModel::getProject(int offset)
     p.setLocation (query.value ("location").toString ());
     p.setDescription (query.value ("description").toString ());
     p.setDate (query.value("date").toString ());
-    //TODO: Add Date field support.
     return p;
 }
 

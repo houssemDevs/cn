@@ -34,4 +34,9 @@ HEADERS += \
     filesviewmodel.h
 
 DISTFILES += \
-    .gitignore
+    .gitignore \
+    icons/AddButton.svg \
+    icons/ArrowButtonBack.svg \
+    icons/ArrowButtonForward.svg \
+    icons/CrossButton.svg \
+    icons/EditButton.svg

@@ -5,5 +5,10 @@
         <file>Banner.qml</file>
         <file>NewProjectPage.qml</file>
         <file>CustomButton.qml</file>
+        <file>icons/AddButton.svg</file>
+        <file>icons/ArrowButtonBack.svg</file>
+        <file>icons/ArrowButtonForward.svg</file>
+        <file>icons/CrossButton.svg</file>
+        <file>icons/EditButton.svg</file>
     </qresource>
 </RCC>
