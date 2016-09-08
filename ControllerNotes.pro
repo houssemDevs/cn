@@ -32,3 +32,6 @@ HEADERS += \
     notesviewmodel.h \
     projectsviewmodel.h \
     filesviewmodel.h
+
+DISTFILES += \
+    .gitignore
