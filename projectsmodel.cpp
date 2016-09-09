@@ -44,12 +44,15 @@ int ProjectsModel::addProject(Project p)
 void ProjectsModel::updateProject(Project p)
 {
     QSqlQuery query(db);
-    query.exec (QString("UPDATE OR IGNORE Projects SET project = %1, location = %2, description = %3"
-                        "WHERE id = %4;")
+    query.exec (QString("UPDATE OR IGNORE Projects SET project = '%1', location = '%2', description = '%3'"
+                        ", date = '%5'"
+                        " WHERE id = %4;")
                 .arg (p.getProject ())
                 .arg (p.getLocation ())
                 .arg (p.getDescription ())
-                .arg (p.getId ()));
+                .arg (p.getId ())
+                .arg (p.getDate()));
+    qDebug() << query.lastError ().text ();
 }
 
 void ProjectsModel::removeProject(Project p)

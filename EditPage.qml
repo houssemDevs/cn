@@ -1,12 +1,12 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.1
-import QtPositioning 5.3
 
 Item {
 
+    property int projectId
+    property int projectIndex
     anchors.fill: parent
-
     ColumnLayout {
         anchors.top: parent.top
         anchors.bottom: parent.bottom
@@ -41,14 +41,13 @@ Item {
         Text {
             text: "Date du controle :"
         }
-        DateInputFiled {
+        TextInputFiled {
             id: projectDateInput
             Layout.preferredWidth:  parent.width - 10
             Layout.preferredHeight: 30
             Layout.alignment: Qt.AlignHCenter
             border.width: focus?1:0
             border.color: "blue"
-            text: new Date().toLocaleDateString()
         }
         Text {
             text: "Description :"
@@ -65,23 +64,26 @@ Item {
             Layout.preferredHeight: 40
             Layout.preferredWidth: parent.width - 10
             Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
-            text: "Create"
+            text: "Enregistrer"
             onClicked: {
-                projectsModel.addNewProject(projectTitleInput.text,
+                projectsModel.modifyProject(projectTitleInput.text,
                                             projectLocationInput.text,
                                             projectDateInput.text,
-                                            projectDescriptionInput.text);
+                                            projectDescriptionInput.text,
+                                            projectId,
+                                            projectIndex);
             }
         }
         Rectangle {
             Layout.fillHeight: true
         }
     }
-    PositionSource {
-        id: gpsPostion
-        updateInterval: 100
-    }
-    Component.onCompleted: {
-        console.log(gpsPostion.position.coordinate)
+    function setupFields(title, date, location, description, id, index){
+        projectTitleInput.text = title
+        projectDateInput.text = date
+        projectLocationInput.text = location
+        projectDescriptionInput.text = description
+        projectId = id
+        projectIndex = index
     }
 }

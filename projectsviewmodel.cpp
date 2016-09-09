@@ -75,6 +75,7 @@ void ProjectsViewModel::modifyProject(QString title, QString location, QString d
     p.setLocation(location);
     p.setProject(title);
     pmodel->updateProject(p);
+    qDebug() << "modify project";
     dataChanged(this->index(index,0,QModelIndex()),this->index(index,0,QModelIndex()),
                 QVector<int>{
                     ProjectModelRoles::ProjectDateRole,

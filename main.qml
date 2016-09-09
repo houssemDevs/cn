@@ -14,8 +14,30 @@ ApplicationWindow {
         width: parent.width
         height: 80
         x: 0; y: 0
-        onNewProjectSignal: pageLoader.source = "NewProjectPage.qml"
-        onMainListSignal: pageLoader.source = "MainPage.qml"
+        onNewProjectSignal: {
+            pageLoader.source = "NewProjectPage.qml"
+            modConn.target = null
+        }
+        onMainListSignal: {
+            pageLoader.source = "MainPage.qml"
+            modConn.target = pageLoader.item
+        }
+        onEditProjectSignal: {
+            pageLoader.source = "MainPage.qml"
+            modConn.target = null
+        }
+
+        Component.onCompleted: mainListSignal()
+    }
+
+    Connections {
+        id: modConn
+        target: null
+        onModifyProject: {
+            banner.editProjectSignal()
+            pageLoader.source = "EditPage.qml"
+            pageLoader.item.setupFields(title,location,date,description,id,index)
+        }
     }
 
     Loader {

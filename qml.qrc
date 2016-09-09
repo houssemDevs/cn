@@ -10,5 +10,10 @@
         <file>icons/ArrowButtonForward.svg</file>
         <file>icons/CrossButton.svg</file>
         <file>icons/EditButton.svg</file>
+        <file>EditPage.qml</file>
+        <file>TextInputFiled.qml</file>
+        <file>TextAreaFiled.qml</file>
+        <file>DateInputFiled.qml</file>
+        <file>icons/CalandarButton.svg</file>
     </qresource>
 </RCC>

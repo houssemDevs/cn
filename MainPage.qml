@@ -5,6 +5,8 @@ import QtQuick.Layouts 1.1
 Item {
     anchors.fill: parent
 
+    signal modifyProject(string title, string location, string date, string description, int id, int index)
+
     ListView {
         id: projectList
         anchors.fill: parent
@@ -48,7 +50,7 @@ Item {
             }
             RowLayout {
                 Layout.alignment: Qt.AlignRight
-                Layout.maximumWidth: 120
+                Layout.maximumWidth: 100
                 Layout.preferredWidth: 100
                 spacing: 6
                 CustomButton {
@@ -57,6 +59,9 @@ Item {
                     Layout.preferredHeight: 40
                     Layout.preferredWidth: 40
                     image: "icons/EditButton.svg"
+                    onClicked: {
+                        modifyProject(projectTitle,projectLocation,projectDate,projectDescription,projectId,index)
+                    }
                 }
                 CustomButton {
                     id: removeButton
